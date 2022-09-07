@@ -2960,8 +2960,11 @@ class file_viewer(wx.Dialog):
 class RedirectText(object):
     def __init__(self, aWxTextCtrl):
         self.out = aWxTextCtrl
+        self.stdout = sys.stdout
+        self.stderr = sys.stderr
 
     def write(self, string):
+        print(string, file=self.stdout)
         wx.CallAfter(self.out.WriteText, string)
 
     def flush(self):
