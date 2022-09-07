@@ -31,7 +31,7 @@ import subprocess
 # import gui template made by wxformbuilder
 import gui
 
-
+from collections import defaultdict
 
 os.environ["UBUNTU_MENUPROXY"]="0"
 if platform.system() == 'Darwin':
@@ -106,7 +106,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
             self.project['version'] = {}
             self.project['version']['marxanconpy'] = marxanconpy.__version__
             self.project['version']['MarxanConnect'] = MarxanConnectVersion
-            self.project['filepaths'] = {}
+            self.project['filepaths'] = defaultdict(str)
             self.project['filepaths']['projfile'] = str(sys.argv[1])
             self.workingdirectory = os.path.dirname(self.project['filepaths']['projfile'])
             os.chdir(self.workingdirectory)
@@ -118,7 +118,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
             # launch Getting started window
             GettingStartedframe = GettingStarted(parent=self)
             GettingStartedframe.Show()
-            # self.project['filepaths'] = {}
+            # self.project['filepaths'] = defaultdict(str)
             # self.project['filepaths']['projfile'] =r"C:\Users\daigl\Documents\GitHub\MarxanConnect\docs\tutorial\CF_demographic\tutorial.MarCon"
             # self.workingdirectory = os.path.dirname(self.project['filepaths']['projfile'])
             # self.load_project_function(launch=True)
@@ -232,7 +232,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
             self.project['version'] = {}
             self.project['version']['marxanconpy'] = marxanconpy.__version__
             self.project['version']['MarxanConnect'] = MarxanConnectVersion
-            self.project['filepaths'] = {}
+            self.project['filepaths'] = defaultdict(str)
             self.project['filepaths']['projfile'] = dlg.GetPath()
             self.workingdirectory = dlg.GetDirectory()
             os.chdir(self.workingdirectory)
@@ -2990,7 +2990,6 @@ class LogForm(wx.Frame):
 
     def __close(self, event):
         self.Hide()
-
 
 # ##########################  run the GUI ##############################################################################
 app = wx.App(False)
