@@ -2982,15 +2982,15 @@ class GettingStarted ( wx.Frame ):
 		fgSizer63.Add( self.m_bitmap10, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_TOP|wx.TOP, 20 )
 
 
-		bSizer52.Add( fgSizer63, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_TOP|wx.EXPAND, 5 )
+		bSizer52.Add( fgSizer63, 1, wx.ALIGN_TOP|wx.EXPAND, 5 )
 
 		bSizer63 = wx.BoxSizer( wx.VERTICAL )
 
 		self.m_bitmap3 = wx.StaticBitmap( self.m_panel27, wx.ID_ANY, wx.Bitmap( u"docs/images/icon_MarxanConnect.png", wx.BITMAP_TYPE_ANY ), wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer63.Add( self.m_bitmap3, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
+		bSizer63.Add( self.m_bitmap3, 0, wx.ALL|wx.EXPAND, 5 )
 
 
-		bSizer52.Add( bSizer63, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		bSizer52.Add( bSizer63, 1, wx.EXPAND, 5 )
 
 		fgSizer631 = wx.FlexGridSizer( 2, 1, 0, 0 )
 		fgSizer631.AddGrowableCol( 0 )
@@ -3135,7 +3135,7 @@ class spec_customizer ( wx.Frame ):
 
 		# Cell Defaults
 		self.spec_grid.SetDefaultCellAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
-		spec_mainsizer.Add( self.spec_grid, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		spec_mainsizer.Add( self.spec_grid, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 		spec_button_sizer = wx.FlexGridSizer( 0, 3, 0, 0 )
 		spec_button_sizer.AddGrowableCol( 0 )
