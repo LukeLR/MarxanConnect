@@ -2923,7 +2923,7 @@ class file_viewer(wx.Dialog):
 
         # Cell Defaults
         self.file_grid.SetDefaultCellAlignment(wx.ALIGN_CENTRE, wx.ALIGN_CENTRE)
-        file_mainsizer.Add(self.file_grid, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL | wx.EXPAND, 5)
+        file_mainsizer.Add(self.file_grid, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
 
         file_button_sizer = wx.FlexGridSizer(0, 3, 0, 0)
         file_button_sizer.AddGrowableCol(0)
