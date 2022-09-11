@@ -38,6 +38,9 @@ if platform.system() == 'Darwin':
     import pexpect
     wx.SystemOptions.SetOption(u"osx.openfiledialog.always-show-types","1")
 
+if platform.system() == 'Linux':
+    import pexpect
+
 # define wildcards
 wc_MarCon = "Marxan Connect Project (*.MarCon)|*.MarCon|" \
             "All files (*.*)|*.*"
@@ -2319,6 +2322,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
         """
         Starts Marxan
         """
+        print(f"Running Marxan from path: {MCPATH}");
         if self.project['options']['marxan'] == "Marxan":
             if not os.path.isfile(os.path.join(MCPATH, 'Marxan243',"Marxan.exe")) or\
                     not os.path.isfile(os.path.join(MCPATH, 'Marxan243',"Marxan_x64.exe")):
@@ -2332,6 +2336,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
             self.project['connectivityMetrics'] = {}
         self.temp = {}
 
+        print("Reading the input file")
         # edit input file
         # Read in the file
         with open(self.project['filepaths']['marxan_input'], 'r', encoding="utf8") as file:
@@ -2355,9 +2360,10 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
             inputpath = inputpath.replace(inputpath[0:2], "C:\\")
             marxanpath = marxanpath.replace(marxanpath[0:2], "C:\\")
 
-
+        print("Input file modifications done, starting Marxan execution for {}".format(platform.system()))
 
         if platform.system() == 'Windows':
+            print("Running Marxan for Windows")
             marxanconpy.warn_dialog(
                 "Please note: Marxan Connect will be unresponsive until the Marxan pop-up window has finished and has been closed.")
             if self.project['options']['marxan'] == "Marxan":
@@ -2381,6 +2387,7 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
                             cwd=inputpath)
 
         elif platform.system() == 'Darwin':
+            print("Running Marxan for macOS")
             self.log.Show()
             marxanconpy.warn_dialog(
                 "Please note: Marxan Connect will be unresponsive until the Marxan pop-up window has finished. On macOS,"
@@ -2391,6 +2398,30 @@ class MarxanConnectGUI(gui.MarxanConnectGUI):
                     marxan_exec = 'MarOpt_v243_Mac64'
                 else:
                     marxan_exec = 'MarOpt_v243_Mac32'
+            else:
+                marxanconpy.warn_dialog('Sorry, this experimental feature is only available for Windows at the monment')
+
+            if " " in self.project['filepaths']['marxan_input']:
+                marxanconpy.warn_dialog("Marxan will likely fail to find the input file because the filepath contains "
+                                        "spaces. Please move your project folder or rename the offending directory")
+                
+            proc = pexpect.spawnu(os.path.join(marxanpath, 'Marxan243', marxan_exec)+' '+os.path.relpath(self.project['filepaths']['marxan_input'],inputpath),cwd=inputpath)
+            proc.logfile = sys.stdout
+            proc.expect('.*Press return to exit.*')
+            proc.close()
+        
+        elif platform.system() == 'Linux':
+            print("Running Marxan for Windows")
+            self.log.Show()
+            marxanconpy.warn_dialog(
+                "Please note: Marxan Connect will be unresponsive until the Marxan pop-up window has finished. On macOS,"
+                "Marxan Connect does not provide 'live' updates on Marxan's progress. See the 'macOS Marxan feedback' "
+                "issue on our github page")
+            if self.project['options']['marxan'] == "Marxan":
+                if self.project['options']['marxan_bit']=="64-bit":
+                    marxan_exec = 'MarOpt_v243_Linux64'
+                else:
+                    marxan_exec = 'MarOpt_v243_Linux32'
             else:
                 marxanconpy.warn_dialog('Sorry, this experimental feature is only available for Windows at the monment')
 
