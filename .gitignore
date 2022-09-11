@@ -112,3 +112,13 @@ MarxanConnect-v*
 *.dmg
 *.rds
 .vscode/settings.json
+
+VERSION
+docs/site_libs/**/*.js
+docs/site_libs/**/*.css
+docs/site_libs/**/*.scss
+docs/site_libs/**/*.min.css
+docs/site_libs/**/*.map
+docs/targets_files/figure-html/*.png
+docs/glossary_files/figure-html/*.png
+docs/*.html

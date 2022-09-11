@@ -14,7 +14,7 @@ all: web win zip
 web: docs/index.Rmd docs/glossary.Rmd docs/tutorial.Rmd docs/CONTRIBUTING.Rmd
     # creates the website
 	# rm -rf docs/site_libs; \
-	Rscript -e "rmarkdown::render_site('docs')"; \
+	Rscript -e "tmap::tmap_options(check.and.fix = TRUE); rmarkdown::render_site('docs')"; \
 	# move .md to root for github
 	mv docs/index.md README.md; \
 	mv docs/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md; \
@@ -36,7 +36,7 @@ endif
 	rm -rf build
 	rm -rf dist
 	# build gui
-	pyinstaller setup.spec -y --clean --windowed --icon=docs/images/icon_bundle.ico;\
+	pyinstaller setup.spec -y --clean
 
 app: gui.py MarxanConnectGUI.py
 	# builds the executable
@@ -50,7 +50,7 @@ endif
 	rm -rf build
 	rm -rf dist
 	# build gui
-	pyinstaller setup.spec -y --clean --windowed --icon=docs/images/icon_mac.icns;\
+	pyinstaller setup.spec -y --clean
 
 mac: app
 ifeq (${daily},1)

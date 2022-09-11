@@ -2982,15 +2982,15 @@ class GettingStarted ( wx.Frame ):
 		fgSizer63.Add( self.m_bitmap10, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_TOP|wx.TOP, 20 )
 
 
-		bSizer52.Add( fgSizer63, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_TOP|wx.EXPAND, 5 )
+		bSizer52.Add( fgSizer63, 1, wx.ALIGN_TOP|wx.EXPAND, 5 )
 
 		bSizer63 = wx.BoxSizer( wx.VERTICAL )
 
 		self.m_bitmap3 = wx.StaticBitmap( self.m_panel27, wx.ID_ANY, wx.Bitmap( u"docs/images/icon_MarxanConnect.png", wx.BITMAP_TYPE_ANY ), wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer63.Add( self.m_bitmap3, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
+		bSizer63.Add( self.m_bitmap3, 0, wx.ALL|wx.EXPAND, 5 )
 
 
-		bSizer52.Add( bSizer63, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		bSizer52.Add( bSizer63, 1, wx.EXPAND, 5 )
 
 		fgSizer631 = wx.FlexGridSizer( 2, 1, 0, 0 )
 		fgSizer631.AddGrowableCol( 0 )
@@ -3014,7 +3014,7 @@ class GettingStarted ( wx.Frame ):
 
 		bSizer512 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_staticText1002 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"How to cite (will have DOI, etc later):\n\nDaigle, RM; Metaxas, A; Balbar, AC; McGowan, J; Treml, EA; Kuempel, CD; Possingham, HP; Beger, M. 2018. Marxan Connect v1.0.1-rc2020.03.19.17. https://github.com/remi-daigle/MarxanConnect", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText1002 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"How to cite (will have DOI, etc later):\n\nDaigle, RM; Metaxas, A; Balbar, AC; McGowan, J; Treml, EA; Kuempel, CD; Possingham, HP; Beger, M. 2018. Marxan Connect v1.0.1. https://github.com/remi-daigle/MarxanConnect", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText1002.Wrap( -1 )
 
 		bSizer512.Add( self.m_staticText1002, 0, wx.ALL|wx.EXPAND, 5 )
@@ -3135,7 +3135,7 @@ class spec_customizer ( wx.Frame ):
 
 		# Cell Defaults
 		self.spec_grid.SetDefaultCellAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
-		spec_mainsizer.Add( self.spec_grid, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		spec_mainsizer.Add( self.spec_grid, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 		spec_button_sizer = wx.FlexGridSizer( 0, 3, 0, 0 )
 		spec_button_sizer.AddGrowableCol( 0 )
