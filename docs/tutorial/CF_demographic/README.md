@@ -50,3 +50,103 @@ Some explaination on the files contained in this tutorial folder
 
 `tutorial_no_connect.MarCon`: Marxan Connect project without connectivity (?)
 - same information with different values, file paths and some parameters changed
+
+## input folder
+`bound.dat`: 3601 pairs of planning units and a boolean variable (always one)
+- Probably whether they share a common boundary?
+
+`pu.dat`: information on the planning units
+- `cost`: always 1
+- `status`: always 0
+- `xloc` and `yloc`: float values
+
+`puvspr_connect.dat`: Amount of species per planning unit
+- May contain multiple rows per planning unit (different species)
+
+`puvspr.dat`: Same thing but without connectivity metrics applied
+
+`spec_connect.dat`: Information on each species
+- `prop`: Float in [0,1]
+- `spf`: Always 1000
+- `name`
+
+`spec.dat`: Same thing but without `google_demo_pu_discrete_median_to_maximum` (that apparently is treated as a species?)
+
+## output folder
+
+### `connect_*`-files
+`connect_r*.txt`: CSV file holding binary variables whether each planning unit is part of the solution of the corresponding run
+
+`connect_best.txt`: copy of the `connect_r*.txt` file corresponding to the best solution
+
+`connect_log.dat`: Log output of Marxan containing information on each run
+- `Tinit`
+- `Tcool`
+- Value
+- Cost
+- PUs
+- Connection
+- Missing
+- Shortfall
+- Penalty
+- MPM
+
+`connect_mv*.txt`: CSV file on each species for each run's solution
+- Conservation Feature
+- Feature Name
+- Target
+- Amount Held
+- Occurrence Target
+- Occurrences Held
+- Separation Target
+- Separation Archieved
+- Target Met
+- MPM
+
+`connect_mvbest.txt`: copy of the `connect_mv*.txt` file corresponding to the best solution
+
+`connect_sen.dat`: Some debug output / parameter information from Marxan (?)
+
+`connect_ssoln.txt`: CSV holding integers for each planning unit
+- might be frequencies how often a planning unit was part of a solution
+
+`connect_sum.txt`: CSV with aggregated information on each run:
+- run number
+- score
+- cost
+- planning units
+- connectivity
+- connectivity total
+- connectivity in
+- connectivity edge
+- connectivity out
+- connectivity in fraction
+- penalty
+- shortfall
+- missing values
+- MPM
+
+`pu_connect_best_solution.png`: PNG plot of PUs on basemap with selected PUs highlighted
+
+`pu_connect_selection_frequency.png`: PNG plot of PUs on basemap with color scale indicating selection frequency
+
+`pu_connect.cpg`: File containing which text encoding is used
+
+`pu_connect.csv`: CSV file containing for each PU:
+- value for each species
+- polygon coordinates
+- `google_demo_pu_discrete_median_to_maximum`: binary variable
+- `best_solution` (binary)
+- selection frequency (float)
+- status (always 0)
+
+`pu_connect.dbf`: Same information in FoxBase+/dBase III format
+
+`pu_connect.prj`: Information on coordinate projection used in shapefile
+
+`pu_connect.shp`: Same information as ESRi shapefile
+
+`pu_connect.shx`: shapefile index
+
+### `no_connect_*`-files
+A copy of this file structure exists for the non-connectivity version (?)
