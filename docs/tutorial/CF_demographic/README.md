@@ -26,8 +26,8 @@ Some explaination on the files contained in this tutorial folder
 `MarOptTotalAreas.csv`: Metadata for each species:
 - `spname`, `spindex` , `totalarea`, `reservedarea`, `excludedarea`, `targetarea`, `totalocc`, `reservedocc`, `excludedocc`, `targetocc`
 
-### `tutorial.MarCon`
-JSON file: Marxan Connect project
+### Marxan Connect project files
+`tutorial.MarCon`: JSON file: Marxan Connect project
 - `connectivityMetrics`
 	- `best_solution`: list of 653 binary values
 	- `boundary`: empty dict
